@@ -1,0 +1,21 @@
+div{
+    border: 2px solid dodgerblue;
+    margin: 10px 25px;
+    padding: 15px;
+    background-color: rgba(83, 215, 225, 0.8);
+    border-radius: 150px;
+    box-shadow: 3px 8px rgba(14, 61, 103, 0.8);
+}
+img{
+    float: right;
+    border-radius: 50%;
+}
+.cvPrincipal{
+    text-align: center;
+    font-family: "Jaro", sans-serif;
+    background: linear-gradient(to right, #000000, #2f9ec1);
+}
+#nombrePersona{
+    text-shadow: 2px -4px #d64bf4;
+}
+
