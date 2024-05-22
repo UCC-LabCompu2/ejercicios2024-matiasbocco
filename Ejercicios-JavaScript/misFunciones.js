@@ -1,10 +1,9 @@
 /**
  * Descripción
- * @method Nombre de la función
- * @param Parámetro A
- * @param Parámetro B
- * @return Valor que retorna
- */
+ * @method convertirUnidades de la función
+ * @param {string} id
+ * @param {string} valor
+  */
 
 function convertirUnidades(nombre,valor){
     if(isNaN(valor)){
@@ -47,4 +46,22 @@ function convertirUnidades(nombre,valor){
         document.getElementById("metro").value = valor* 0.9144;
         document.getElementById("pulgada").value=valor*36;
         document.getElementById("pie").value=valor*3;}
+}
+
+/**
+ * Permite convertir grados a radianes y viceversa
+ * @metod convertirGR
+ * @param {string} id - grados - radianes
+ */
+function convertirGR(id){
+    if (id=== "grados"){
+        let grad = document.getElementById("grados").value;
+        let rad = grad*Math.PI/180;
+        document.getElementById("radiante").value = rad;
+    }
+    if (id=== "radianes"){
+        let rad = document.getElementById("radianes").value;
+        let grad = rad/Math.PI*180;
+        document.getElementById("grados").value = grad;
+    }
 }
