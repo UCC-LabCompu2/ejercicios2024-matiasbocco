@@ -90,3 +90,21 @@ let division = () =>{
     const d1= Number(document.getElementById("numd1").value);
     const d2= Number(document.getElementById("numd2").value);
     document.getElementById("totalD").innerHTML= d1/d2;}
+
+function  dibujarCirculoCuadrado(){
+    const canvas=document.getElementById("myCanvas");
+    const ctx=canvas.getContext("2d");
+    const anchoMax = canvas.width;
+    const alturaMax = canvas.height;
+    const tamanio =200;
+    const margen = 10;
+    ctx.fillStyle="#2db0ff";
+    ctx.fillRect(0+margen,alturaMax-tamanio-margen,tamanio,tamanio);
+
+
+    ctx.fillStyle="#334422"
+    ctx.arc(anchoMax/2,alturaMax/2, tamanio/2, 0,2*Math.PI,false)
+    ctx.stroke();
+    ctx.fill();
+
+}
