@@ -55,7 +55,7 @@ function convertirGR(id){
     if (id=== "grados"){
         let grad = document.getElementById("grados").value;
         let rad = grad*Math.PI/180;
-        document.getElementById("radiante").value = rad;
+        document.getElementById("radianes").value = rad;
     }
     if (id=== "radianes"){
         let rad = document.getElementById("radianes").value;
@@ -114,6 +114,7 @@ function CargarEventListener(){
 }
 
 var bandera;
+
 function dibujar(event){
     const canvas=document.getElementById("myCanvas");
     const ctx=canvas.getContext("2d");
@@ -129,6 +130,114 @@ function dibujar(event){
 }
 
 function borrarCanvas (){
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d")
+    canvas.width=canvas.width;
+}
+
+function dibujarCuadriculado(){
+    const canvas=document.getElementById("myCanvas");
+    const ctx=canvas.getContext("2d");
+    const paso=20;
+    const anchoMax=canvas.width;
+    const alturaMax=canvas.height;
+    ctx.strokeStyle ="blue";
+
+    for(let i=paso;i<anchoMax;){
+    ctx.beginPath();
+    ctx.moveTo(i,0);
+    ctx.lineTo(i,alturaMax);
+    ctx.strokeStyle= "#2f9ec1"
+    ctx.stroke();
+    ctx.closePath();
+    i+=paso;
+    }
+    for(let i=paso;i<alturaMax;){
+        ctx.beginPath();
+        ctx.moveTo(0,i);
+        ctx.lineTo(anchoMax,i);
+        ctx.strokeStyle= "#2f9ec1" ;
+        ctx.stroke();
+        ctx.closePath();
+        i+=paso;
+    }
+
+    ctx.beginPath();
+    ctx.moveTo(0,alturaMax/2);
+    ctx.lineTo(anchoMax,alturaMax/2);
+    ctx.strokeStyle= "#111111";
+    ctx.stroke();
+    ctx.closePath();
+
+    ctx.beginPath();
+    ctx.moveTo(anchoMax/2,0);
+    ctx.lineTo(anchoMax/2,alturaMax);
+    ctx.strokeStyle= "#111111";
+    ctx.stroke();
+    ctx.closePath();
+}
+
+function dibujarImagen(posX, posY) {
     const canvas = document.getElementById("myCanvas");
-    canvas.widht=canvas.width;
+    const ctx = canvas.getContext("2d");
+
+    console.log(posX, posY);
+    canvas.width = canvas.width;
+    const img = new Image();
+    img.src = "images/auto.png";
+    if (posX<0 || posY<0 || posX>canvas.width || posY<0 || posY>canvas.height){
+        mostrarDialog();
+    }else{
+    img.onload = function () {
+        canvas.width = canvas.width;
+        ctx.drawImage(img, posX,posY);
+    }}
+}
+
+let mostrarDialog = ()=> {
+    const dialog =document.getElementById("mensajeDeError");
+    dialog.showModal();
+}
+let cierreDialog = () =>{
+    const dailog=document.getElementById("mensajeDeError");
+    dialog.close();
+}
+
+function guardarLocalStorage(){
+    let distancia, unidad;
+    distancia=document.getElementById('distancia').value;
+    unidad=document.getElementsByName('unidades')[0].value;
+    localStorage.setItem("distanciaLS",distancia);
+    localStorage.setItem("unidadLS",unidad);
+    window.open('segundaWeb.html');
+}
+function cargarLocalStorage(){
+    let cant, un;
+    cant = localStorage.getItem("distanciaLS");
+    un = localStorage.getItem("unidadLS");
+
+    document.getElementById("dist").value =cant + " " +un;
+}
+
+x=0;
+dx=2;
+function animarAuto(){
+
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = canvas.width;
+
+    const img = new Image();
+    img.src = "images/auto.png";
+
+    img.onload = function () {
+        ctx.drawImage(img,x,100);
+    }
+
+    if (x>canvas.width){
+        x=0;
+    }
+    x+=dx;
+
+
 }
