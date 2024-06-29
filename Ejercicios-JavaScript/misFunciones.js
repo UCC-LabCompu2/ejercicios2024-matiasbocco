@@ -1,10 +1,10 @@
-/**
- * Descripción
- * @method convertirUnidades de la función
- * @param {string} id
- * @param {string} valor
-  */
 
+/**
+ * Convierte unidades de medida
+ * @method convertirUnidades
+ * @param {string} nombre - Nombre de la unidad
+ * @param {string} valor - Valor de la unidad
+ */
 function convertirUnidades(nombre,valor){
 
     if (valor.includes(",")){
@@ -47,9 +47,9 @@ function convertirUnidades(nombre,valor){
 }
 
 /**
- * Permite convertir grados a radianes y viceversa
- * @metod convertirGR
- * @param {string} id - grados - radianes
+ * Convierte grados a radianes y viceversa
+ * @method convertirGR
+ * @param {string} id - - grados - radianes
  */
 function convertirGR(id){
     if (id=== "grados"){
@@ -63,7 +63,11 @@ function convertirGR(id){
         document.getElementById("grados").value = grad;
     }
 }
-
+/**
+ * Muestra u oculta un div según el valor dado
+ * @method mostrar_ocultar
+ * @param {string} valor - Valor que indica si se muestra u oculta el div
+ */
 let mostrar_ocultar = (valor) =>{
     if(valor==="val_mostrar"){
         document.getElementById("unDiv").style.display = 'block';
@@ -71,26 +75,43 @@ let mostrar_ocultar = (valor) =>{
         document.getElementById("unDiv").style.display = 'none';
     }
 }
-
+/**
+ * Suma dos números y muestra el resultado
+ * @method suma
+ */
 let suma = () =>{
     const s1= Number(document.getElementById("nums1").value);
     const s2= Number(document.getElementById("nums2").value);
 document.getElementById("totalS").innerHTML= s1+s2;
 }
-
+/**
+ * Resta dos números y muestra el resultado
+ * @method resta
+ */
 let resta = () =>{
     const r1= Number(document.getElementById("numr1").value);
     const r2= Number(document.getElementById("numr2").value);
     document.getElementById("totalR").innerHTML= r1-r2;}
+/**
+ * Multiplica dos números y muestra el resultado
+ * @method multiplicacion
+ */
 let multiplicacion = () =>{
     const m1= Number(document.getElementById("numm1").value);
     const m2= Number(document.getElementById("numm2").value);
     document.getElementById("totalM").innerHTML= m1*m2;}
+/**
+ * Divide dos números y muestra el resultado
+ * @method division
+ */
 let division = () =>{
     const d1= Number(document.getElementById("numd1").value);
     const d2= Number(document.getElementById("numd2").value);
     document.getElementById("totalD").innerHTML= d1/d2;}
-
+/**
+ * Dibuja un círculo y un cuadrado en el canvas
+ * @method dibujarCirculoCuadrado
+ */
 function  dibujarCirculoCuadrado(){
     const canvas=document.getElementById("myCanvas");
     const ctx=canvas.getContext("2d");
@@ -108,13 +129,20 @@ function  dibujarCirculoCuadrado(){
     ctx.fill();
 
 }
-
+/**
+ * Carga un evento listener para dibujar en el canvas
+ * @method CargarEventListener
+ */
 function CargarEventListener(){
     document.getElementById("myCanvas").addEventListener("mousemove", dibujar);
 }
 
 var bandera;
-
+/**
+ * Dibuja en el canvas
+ * @method dibujar
+ * @param {object} event - Movimiento del mouse
+ */
 function dibujar(event){
     const canvas=document.getElementById("myCanvas");
     const ctx=canvas.getContext("2d");
@@ -128,13 +156,19 @@ function dibujar(event){
         ctx.fillRect(posX,posY,5,5);
     }
 }
-
+/**
+ * Borra el contenido del canvas
+ * @method borrarCanvas
+ */
 function borrarCanvas (){
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d")
     canvas.width=canvas.width;
 }
-
+/**
+ * Dibuja un cuadriculado en el canvas
+ * @method dibujarCuadriculado
+ */
 function dibujarCuadriculado(){
     const canvas=document.getElementById("myCanvas");
     const ctx=canvas.getContext("2d");
@@ -176,7 +210,12 @@ function dibujarCuadriculado(){
     ctx.stroke();
     ctx.closePath();
 }
-
+/**
+ * Dibuja una imagen en el canvas
+ * @method dibujarImagen
+ * @param {number} posX - Posición en X de la imagen
+ * @param {number} posY - Posición en Y de la imagen
+ */
 function dibujarImagen(posX, posY) {
     const canvas = document.getElementById("myCanvas");
     const ctx = canvas.getContext("2d");
@@ -193,16 +232,26 @@ function dibujarImagen(posX, posY) {
         ctx.drawImage(img, posX,posY);
     }}
 }
-
+/**
+ * Muestra un diálogo de error
+ * @method mostrarDialog
+ */
 let mostrarDialog = ()=> {
     const dialog =document.getElementById("mensajeDeError");
     dialog.showModal();
 }
+/**
+ * Cierra el diálogo de error
+ * @method cierreDialog
+ */
 let cierreDialog = () =>{
     const dailog=document.getElementById("mensajeDeError");
     dialog.close();
 }
-
+/**
+ * Guarda datos en el LocalStorage y abre la página siguiente
+ * @method guardarLocalStorage
+ */
 function guardarLocalStorage(){
     let distancia, unidad;
     distancia=document.getElementById('distancia').value;
@@ -211,6 +260,10 @@ function guardarLocalStorage(){
     localStorage.setItem("unidadLS",unidad);
     window.open('segundaWeb.html');
 }
+/**
+ * Carga datos desde el LocalStorage y los muestra
+ * @method cargarLocalStorage
+ */
 function cargarLocalStorage(){
     let cant, un;
     cant = localStorage.getItem("distanciaLS");
@@ -221,8 +274,11 @@ function cargarLocalStorage(){
 
 x=0;
 dx=2;
+/**
+ * Anima la imagen del auto en el canvas
+ * @method animarAuto
+ */
 function animarAuto(){
-
     const canvas = document.getElementById("myCanvas");
     const ctx = canvas.getContext("2d");
     canvas.width = canvas.width;
